@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Set;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class FormStatementsTest {
+public class FormReportsTest {
     StatementApi statementApi = new StatementApi();
     Workbook workbook = new XSSFWorkbook();
     ExcelReader excelReader = new ExcelReader(workbook);
@@ -23,7 +23,7 @@ public class FormStatementsTest {
 
     @ParameterizedTest(name = "{index} - type {0} report formed")
     @MethodSource("getStatementTypes")
-    public void formStatement(String type) {
+    public void formReport(String type) {
         Response response = statementApi.formReport(type);
         String statementName = StatementsMapper.getStatementNameBasedOnType(type);
         Integer statusCode = response.statusCode();
