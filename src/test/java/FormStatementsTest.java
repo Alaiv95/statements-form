@@ -24,7 +24,7 @@ public class FormStatementsTest {
     @ParameterizedTest(name = "{index} - type {0} report formed")
     @MethodSource("getStatementTypes")
     public void formStatement(String type) {
-        Response response = statementApi.fromStatement(type);
+        Response response = statementApi.formReport(type);
         String statementName = StatementsMapper.getStatementNameBasedOnType(type);
         Integer statusCode = response.statusCode();
         String result = getStatusCodeResult(statusCode);
@@ -52,7 +52,7 @@ public class FormStatementsTest {
     public void writeToFile() throws IOException {
         File currDir = new File(".");
         String path = currDir.getAbsolutePath();
-        String fileLocation = path.substring(0, path.length() - 1) + "statementResDebian.xlsx";
+        String fileLocation = path.substring(0, path.length() - 1) + "statementRes70.xlsx";
 
         FileOutputStream outputStream = new FileOutputStream(fileLocation);
         workbook.write(outputStream);
